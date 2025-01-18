@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Videobelajar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      header {
+        background-color: #fffbf2;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        color: #ffa500;
+        margin: 0;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #fff;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      main {
+        margin: 20px 40px;
+      }
+
+      .logo img {
+        width: 180px;
+        margin-top: 15px;
+      }
+
+      .dehaze {
+        display: none;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: #555;
+        margin-right: 10px;
+        font-size: 16px;
+      }
+
+      .profile-img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero-section {
+        position: relative;
+        background-image: url("/asset/background-hero-footer.jpg"); /* Ganti dengan gambar Anda */
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Transparansi hitam */
+        z-index: 1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 600px;
+        padding: 20px;
+      }
+
+      .content h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #00cc44;
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background-color: #009933;
+      }
+
+      .categories {
+        display: flex;
+        margin: 20px 0;
+      }
+
+      .categories button {
+        background: none;
+        border: none;
+        margin: 0 10px;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .categories .active {
+        border-bottom: 2px solid #ffa500;
+        color: #ff6600;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .course-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .course-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .course-card .details {
+        padding: 15px;
+      }
+
+      .course-card h3 {
+        font-size: 1.25rem;
+        margin: 0;
+      }
+
+      .course-card p {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 10px 0;
+      }
+
+      .course-card .price {
+        color: #ffa500;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      .newsletter-section {
+        position: relative;
+        background-image: url("/asset/background-hero-footer.jpg"); /* Ganti dengan gambar Anda */
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .newsletter-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+        z-index: 1;
+      }
+
+      .newsletter-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 600px;
+        padding: 20px;
+      }
+
+      .newsletter-content h3 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        opacity: 0.8;
+      }
+
+      .newsletter-content h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .newsletter-content p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      .newsletter-form {
+        display: flex;
+        justify-content: center;
+      }
+
+      .input-container {
+        display: flex;
+        align-items: center;
+        border: 2px solid #ddd;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        background-color: white;
+      }
+
+      .input-container input {
+        border: none;
+        padding: 10px 15px;
+        font-size: 1rem;
+        outline: none;
+        flex: 1;
+      }
+
+      .input-container button {
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: #f7a600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .input-container button:hover {
+        background-color: #e69500;
+      }
+
+      .footer {
+        background-color: #fff;
+        color: #333;
+        padding: 40px 20px;
+        border-top: 1px solid #ddd;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .footer-section {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .footer-logo {
+        color: #f68b1e; /* Warna oranye */
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .footer-section h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #000;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: hide; /* Default disembunyikan */
+      }
+
+      .footer-section ul li {
+        margin-bottom: 8px;
+      }
+
+      .collapse-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        text-align: left;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      .social-icons a {
+        margin-right: 10px;
+        display: inline-block;
+      }
+
+      .social-icons img {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Responsif untuk layar dengan lebar maksimum 768px (tablet & mobile) */
+      @media (max-width: 768px) {
+        .nav {
+          display: none;
+          flex-direction: column;
+          background-color: #fff; /* Sesuaikan dengan warna latar belakang */
+          position: absolute;
+          top: 60px; /* Sesuaikan dengan tinggi header */
+          right: 0;
+          width: 100%;
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .dehaze {
+          cursor: pointer;
+        }
+
+        .nav a {
+          padding: 10px;
+          text-decoration: none;
+          color: #000;
+        }
+
+        .profile-img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+
+        /* Tampilan untuk nav ketika dehaze diklik */
+        .nav.active {
+          display: flex;
+        }
+        header {
+          padding-bottom: 30px;
+          text-align: center;
+        }
+
+        .dehaze {
+          display: block;
+        }
+
+        .header {
+          padding: 10px;
+        }
+
+        .logo {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        .nav {
+          align-items: center;
+        }
+
+        .nav a {
+          margin-bottom: 10px;
+          font-size: 14px;
+        }
+
+        main {
+          margin: 10px 20px;
+        }
+
+        .hero-section {
+          height: 300px;
+        }
+
+        .content h1 {
+          font-size: 2rem;
+        }
+
+        .content p {
+          font-size: 1rem;
+        }
+
+        .cta-button {
+          padding: 10px 20px;
+          font-size: 0.875rem;
+        }
+
+        .categories button {
+          margin: 5px 0;
+        }
+
+        .course-grid {
+          grid-template-columns: 1fr; /* Tampilkan satu kolom pada layar kecil */
+        }
+
+        .course-card img {
+          height: 150px;
+        }
+
+        .newsletter-section {
+          height: 300px;
+        }
+
+        .newsletter-content h1 {
+          font-size: 1.5rem;
+        }
+
+        .newsletter-content p {
+          font-size: 0.9rem;
+        }
+
+        .input-container input {
+          font-size: 0.9rem;
+          padding: 8px 10px;
+        }
+
+        .input-container button {
+          padding: 8px 15px;
+          font-size: 0.9rem;
+        }
+
+        .footer-container {
+          flex-direction: column;
+        }
+
+        .collapse-btn:after {
+          content: ">"; /* Panah bawah */
+          float: right;
+        }
+
+        .collapse-btn.active:after {
+          content: "<"; /* Panah atas */
+        }
+
+        .menu {
+          display: none;
+          padding-left: 20px;
+        }
+
+        .menu.open {
+          display: block;
+        }
+      }
+
+      /* Responsif untuk layar dengan lebar maksimum 480px (mobile kecil) */
+      @media (max-width: 480px) {
+        .content h1 {
+          font-size: 1.25rem;
+        }
+
+        .content p {
+          font-size: 0.8rem;
+        }
+
+        .cta-button {
+          padding: 8px 15px;
+          font-size: 0.8rem;
+        }
+
+        .newsletter-content h1 {
+          font-size: 1.25rem;
+        }
+
+        .newsletter-content p {
+          font-size: 0.8rem;
+        }
+
+        .input-container input {
+          font-size: 0.8rem;
+          padding: 5px 8px;
+        }
+
+        .input-container button {
+          padding: 5px 10px;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo"><img src="/asset/logo-videobelajar.png" alt="" /></div>
+      <div class="dehaze"><img src="/asset/Dehaze.png" alt="" /></div>
+      <nav class="nav">
+        <a href="#">Kategori</a>
+        <img
+          src="/asset/gambar-cewe.png"
+          alt="User Profile"
+          class="profile-img"
+        />
+      </nav>
+    </header>
+    <script>
+      // Ambil elemen dehaze dan nav
+      const dehaze = document.querySelector(".dehaze");
+      const nav = document.querySelector(".nav");
+
+      // Tambahkan event listener untuk klik dehaze
+      dehaze.addEventListener("click", () => {
+        nav.classList.toggle("active"); // Toggle class 'active' pada nav
+      });
+    </script>
+
+    <main>
+      <section class="hero-section">
+        <div class="overlay"></div>
+        <div class="content">
+          <h1>
+            Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video
+            Interaktif!
+          </h1>
+          <p>
+            Temukan ilmu baru yang menarik dan mendalam melalui koleksi video
+            pembelajaran berkualitas tinggi. Tidak hanya itu, Anda juga dapat
+            berpartisipasi dalam latihan interaktif yang akan meningkatkan
+            pemahaman Anda.
+          </p>
+          <a href="#" class="cta-button"
+            >Temukan Video Course untuk Dipelajari!</a
+          >
+        </div>
+      </section>
+
+      <section class="categories">
+        <button class="active">Semua Kelas</button>
+        <button>Pemasaran</button>
+        <button>Desain</button>
+        <button>Pengembangan Diri</button>
+        <button>Bisnis</button>
+      </section>
+
+      <section class="course-grid">
+        <!-- Example Course Card -->
+        <div class="course-card">
+          <img src="/asset/gamba1.jpg" alt="Course Image" />
+          <div class="details">
+            <h3>Big 4 Auditor Financial Analyst</h3>
+            <p>
+              Mulai transformasi dengan instruktur profesional, harga yang
+              terjangkau, dan...
+            </p>
+            <p class="price">Rp 300K</p>
+          </div>
+        </div>
+
+        <!-- Duplicate this block for more courses -->
+        <div class="course-card">
+          <img src="/asset/gambar2.jpg" alt="Course Image" />
+          <div class="details">
+            <h3>Big 4 Auditor Financial Analyst</h3>
+            <p>
+              Mulai transformasi dengan instruktur profesional, harga yang
+              terjangkau, dan...
+            </p>
+            <p class="price">Rp 300K</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <img src="/asset/gambar3.jpg" alt="Course Image" />
+          <div class="details">
+            <h3>Big 4 Auditor Financial Analyst</h3>
+            <p>
+              Mulai transformasi dengan instruktur profesional, harga yang
+              terjangkau, dan...
+            </p>
+            <p class="price">Rp 300K</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <img src="/asset/gambar4.jpg" alt="Course Image" />
+          <div class="details">
+            <h3>Big 4 Auditor Financial Analyst</h3>
+            <p>
+              Mulai transformasi dengan instruktur profesional, harga yang
+              terjangkau, dan...
+            </p>
+            <p class="price">Rp 300K</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter-section">
+        <div class="newsletter-content">
+          <h3>NEWSLETTER</h3>
+          <h1>Mau Belajar Lebih Banyak?</h1>
+          <p>
+            Daftarkan dirimu untuk mendapatkan informasi terbaru dan penawaran
+            spesial dari program-program terbaik hariesok.id
+          </p>
+          <form class="newsletter-form">
+            <div class="input-container">
+              <input type="email" placeholder="Masukkan Emailmu" required />
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section logo-section">
+          <div class="logo">
+            <img src="/asset/logo-videobelajar.png" alt="" />
+          </div>
+          <p>Gali Potensi Anda Melalui Pembelajaran Video di hariesok.id!</p>
+          <p>Jl. Usman Effendi No. 50 Lowokwaru, Malang</p>
+          <p>+62-877-7123-1234</p>
+        </div>
+
+        <!-- Kategori -->
+        <div class="footer-section collapsible">
+          <button class="collapse-btn" onclick="toggleMenu('kategori-menu')">
+            Kategori
+          </button>
+          <ul id="kategori-menu" class="menu">
+            <li>Digital & Teknologi</li>
+            <li>Pemasaran</li>
+            <li>Manajemen Bisnis</li>
+            <li>Pengembangan Diri</li>
+            <li>Desain</li>
+          </ul>
+        </div>
+
+        <!-- Perusahaan -->
+        <div class="footer-section collapsible">
+          <button class="collapse-btn" onclick="toggleMenu('perusahaan-menu')">
+            Perusahaan
+          </button>
+          <ul id="perusahaan-menu" class="menu">
+            <li>Tentang Kami</li>
+            <li>FAQ</li>
+            <li>Kebijakan Privasi</li>
+            <li>Ketentuan Layanan</li>
+            <li>Bantuan</li>
+          </ul>
+        </div>
+
+        <!-- Komunitas -->
+        <div class="footer-section collapsible">
+          <button class="collapse-btn" onclick="toggleMenu('komunitas-menu')">
+            Komunitas
+          </button>
+          <ul id="komunitas-menu" class="menu">
+            <li>Tips Sukses</li>
+            <li>Blog</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy;2023 Gerobak Sayur All Rights Reserved.</p>
+        <div class="social-icons">
+          <a href="#"><img src="/asset/linkedin (2).png" alt="LinkedIn" /></a>
+          <a href="#"><img src="/asset/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="/asset/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="/asset/twitter.png" alt="Twitter" /></a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const button = menu.previousElementSibling;
+
+        menu.classList.toggle("open");
+        button.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
