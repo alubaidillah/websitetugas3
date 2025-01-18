@@ -149,6 +149,7 @@
       .course-card {
         background: #fff;
         border: 1px solid #ddd;
+        padding: 10px;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -160,25 +161,34 @@
         object-fit: cover;
       }
 
-      .course-card .details {
-        padding: 15px;
+      .course-card .footer-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px 16px;
       }
 
-      .course-card h3 {
-        font-size: 1.25rem;
-        margin: 0;
+      .course-card .footer-card .rating {
+        color: #ffa41b;
+        font-size: 0.9em;
       }
 
-      .course-card p {
-        font-size: 0.875rem;
-        color: #666;
-        margin: 10px 0;
-      }
-
-      .course-card .price {
-        color: #ffa500;
-        font-size: 1rem;
+      .course-card .footer-card .price {
+        color: #28a745;
         font-weight: bold;
+      }
+
+      .profile {
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+      }
+
+      .profile img {
+        border-radius: 10%;
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
       }
 
       .newsletter-section {
@@ -413,7 +423,7 @@
         }
 
         .hero-section {
-          height: 300px;
+          height: 350px;
         }
 
         .content h1 {
@@ -435,10 +445,6 @@
 
         .course-grid {
           grid-template-columns: 1fr; /* Tampilkan satu kolom pada layar kecil */
-        }
-
-        .course-card img {
-          height: 150px;
         }
 
         .newsletter-section {
@@ -576,14 +582,24 @@
       <section class="course-grid">
         <!-- Example Course Card -->
         <div class="course-card">
-          <img src="/asset/gamba1.jpg" alt="Course Image" />
+          <img src="asset/gamba1.jpg" alt="Thumbnail" />
           <div class="details">
             <h3>Big 4 Auditor Financial Analyst</h3>
             <p>
               Mulai transformasi dengan instruktur profesional, harga yang
               terjangkau, dan...
             </p>
-            <p class="price">Rp 300K</p>
+          </div>
+          <div class="profile">
+            <img src="asset/gambar-cewe.png" alt="Profile" />
+            <div>
+              <strong>Jenna Ortega</strong><br />
+              <small>Senior Accountant di Gojek</small>
+            </div>
+          </div>
+          <div class="footer-card">
+            <div class="rating">★★★★☆ 4 (86)</div>
+            <div class="price">Rp 300K</div>
           </div>
         </div>
 
@@ -596,7 +612,17 @@
               Mulai transformasi dengan instruktur profesional, harga yang
               terjangkau, dan...
             </p>
-            <p class="price">Rp 300K</p>
+            <div class="profile">
+              <img src="asset/gambar-cewe.png" alt="Profile" />
+              <div>
+                <strong>Jenna Ortega</strong><br />
+                <small>Senior Accountant di Gojek</small>
+              </div>
+            </div>
+            <div class="footer-card">
+              <div class="rating">★★★★☆ 4 (86)</div>
+              <div class="price">Rp 300K</div>
+            </div>
           </div>
         </div>
 
@@ -608,7 +634,17 @@
               Mulai transformasi dengan instruktur profesional, harga yang
               terjangkau, dan...
             </p>
-            <p class="price">Rp 300K</p>
+            <div class="profile">
+              <img src="asset/gambar-cewe.png" alt="Profile" />
+              <div>
+                <strong>Jenna Ortega</strong><br />
+                <small>Senior Accountant di Gojek</small>
+              </div>
+            </div>
+            <div class="footer-card">
+              <div class="rating">★★★★☆ 4 (86)</div>
+              <div class="price">Rp 300K</div>
+            </div>
           </div>
         </div>
 
@@ -620,7 +656,17 @@
               Mulai transformasi dengan instruktur profesional, harga yang
               terjangkau, dan...
             </p>
-            <p class="price">Rp 300K</p>
+            <div class="profile">
+              <img src="asset/gambar-cewe.png" alt="Profile" />
+              <div>
+                <strong>Jenna Ortega</strong><br />
+                <small>Senior Accountant di Gojek</small>
+              </div>
+            </div>
+            <div class="footer-card">
+              <div class="rating">★★★★☆ 4 (86)</div>
+              <div class="price">Rp 300K</div>
+            </div>
           </div>
         </div>
       </section>

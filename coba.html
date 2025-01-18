@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card UI</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 20px;
+      }
+
+      .course-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        overflow: hidden;
+        transition: transform 0.2s;
+      }
+
+      .course-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .course-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .course-card .content {
+        padding: 16px;
+      }
+
+      .course-card h3 {
+        font-size: 1.2em;
+        margin: 0 0 10px;
+      }
+
+      .course-card p {
+        color: #666;
+        font-size: 0.9em;
+        margin: 0 0 1px;
+      }
+
+      .course-card .footer-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px 16px;
+      }
+
+      .course-card .footer-card .rating {
+        color: #ffa41b;
+        font-size: 0.9em;
+      }
+
+      .course-card .footer-card .price {
+        color: #28a745;
+        font-weight: bold;
+      }
+
+      .profile {
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+      }
+
+      .profile img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="course-card">
+      <img src="asset/gamba1.jpg" alt="Thumbnail" />
+      <div class="details">
+        <h3>Big 4 Auditor Financial Analyst</h3>
+        <p>
+          Mulai transformasi dengan instruktur profesional, harga yang
+          terjangkau, dan...
+        </p>
+      </div>
+      <div class="profile">
+        <img src="asset/gambar-cewe.png" alt="Profile" />
+        <div>
+          <strong>Jenna Ortega</strong><br />
+          <small>Senior Accountant di Gojek</small>
+        </div>
+      </div>
+      <div class="footer-card">
+        <div class="rating">★★★★☆ 4 (86)</div>
+        <div class="price">Rp 300K</div>
+      </div>
+    </div>
+  </body>
+</html>
